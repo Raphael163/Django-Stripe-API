@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Cards</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'main.js' %}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v6.4.0/js/all.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .product-card {
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        .product-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .purchase-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .purchase-button {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+{% for item in items %}
+
+<div class="product-card box">
+    <div class="product-card-content">
+        <h2 class="title is-4">{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p class="subtitle is-6">{{item.price}} $</p>
+
+        <div class="purchase-button-container">
+            <button class="button is-primary purchase-button" id="submitBtn">Purchase!</button>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+
+</body>
+</html>

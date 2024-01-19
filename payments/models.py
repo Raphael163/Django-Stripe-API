@@ -9,3 +9,10 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
+
+class Order(models.Model):
+    items = models.ManyToManyField('Item', related_name='orders', verbose_name='Товары')
+    total_price = models.IntegerField(default=0, verbose_name='Общая стоимость')
+
+    def __str__(self):
+        return f"Order {self.pk}"

@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
-from .models import Item
+from .models import Item, Order
 
 
 class HomePageView(TemplateView):
@@ -59,10 +59,9 @@ def create_checkout_session(request):
                         'price_data': {
                             'currency': 'usd',
                             'product_data': {
-                                'name': 'T-shirt',
-
+                                'name': 'Футболка',
                             },
-                            'unit_amount': 2000,  # Сумма в центах
+                            'unit_amount': 2000,  # в центах
                         },
                         'quantity': 1,
                     },
